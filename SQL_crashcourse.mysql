@@ -23,5 +23,5 @@ PRIMARY KEY (PLAYER_ID),
 FOREIGN KEY (SPORT_ID) REFERENCES SPORT(SPORT_ID));
 
 
-#null VALUES and database constraints
+#null values and database constraints
 
