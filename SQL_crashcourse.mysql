@@ -250,6 +250,7 @@ SELECT * FROM CONTINENT;
     eclipse_type    varchar(10),
     magnitude   decimal(4,3)
  );
+ #ok
 
 
 
