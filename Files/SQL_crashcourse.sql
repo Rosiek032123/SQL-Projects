@@ -2,7 +2,7 @@ SHOW DATABASES;
 CREATE DATABASE LAND;
 
 
-#creating databases with primary keys and foreign keys: DO IT YOURSELF CHAPTER 2
+#CREATING DATABASES WITH PRIMARY KEYS AND FOREIGN KEYS: DO IT YOURSELF CHAPTER 2
 CREATE DATABASE ATHLETIC;
 USE ATHLETIC;
 
@@ -33,175 +33,175 @@ CREATE TABLE CONTINENT(
 
 
 #INSERT DATA INTO THE CONTINENT TABLE#
-insert into continent (continent_id, continent_name, population) values (1, 'Asia', 4641054775);
-insert into continent (continent_id, continent_name, population) values (2, 'Africa', 1340598147);
-insert into continent (continent_id, continent_name, population) values (3, 'Europe', 747636026);
-insert into continent (continent_id, continent_name, population) values (4, 'North America', 592072212);
-insert into continent (continent_id, continent_name, population) values (5, 'South America', 430759766);
-insert into continent (continent_id, continent_name, population) values (6, 'Australia', 43111704);
-insert into continent (continent_id, continent_name, population) values (7, 'Antarctica', 0);
+INSERT INTO CONTINENT (CONTINENT_ID, CONTINENT_NAME, POPULATION) VALUES (1, 'ASIA', 4641054775);
+INSERT INTO CONTINENT (CONTINENT_ID, CONTINENT_NAME, POPULATION) VALUES (2, 'AFRICA', 1340598147);
+INSERT INTO CONTINENT (CONTINENT_ID, CONTINENT_NAME, POPULATION) VALUES (3, 'EUROPE', 747636026);
+INSERT INTO CONTINENT (CONTINENT_ID, CONTINENT_NAME, POPULATION) VALUES (4, 'NORTH AMERICA', 592072212);
+INSERT INTO CONTINENT (CONTINENT_ID, CONTINENT_NAME, POPULATION) VALUES (5, 'SOUTH AMERICA', 430759766);
+INSERT INTO CONTINENT (CONTINENT_ID, CONTINENT_NAME, POPULATION) VALUES (6, 'AUSTRALIA', 43111704);
+INSERT INTO CONTINENT (CONTINENT_ID, CONTINENT_NAME, POPULATION) VALUES (7, 'ANTARCTICA', 0);
 
 
--- Load data into the high_temperature table
--- Drop the old version of the table (if one exists)
-drop table if exists high_temperature;
+-- LOAD DATA INTO THE HIGH_TEMPERATURE TABLE
+-- DROP THE OLD VERSION OF THE TABLE (IF ONE EXISTS)
+DROP TABLE IF EXISTS HIGH_TEMPERATURE;
 
-create table high_temperature
+CREATE TABLE HIGH_TEMPERATURE
 (
-    city              varchar(50),
-    year              int,
-    high_temperature  int,
-    constraint check (year between 1880 and 2200),
-    constraint check (high_temperature < 200),
-    primary key (city, year)
+    CITY              VARCHAR(50),
+    YEAR              INT,
+    HIGH_TEMPERATURE  INT,
+    CONSTRAINT CHECK (YEAR BETWEEN 1880 AND 2200),
+    CONSTRAINT CHECK (HIGH_TEMPERATURE < 200),
+    PRIMARY KEY (CITY, YEAR)
 );
 
--- Reinsert the data into the high_temperature table
-insert into high_temperature (city, year, high_temperature)
-values
-('Death Valley, CA', 		2020,	130),
-('International Falls, MN', 2020,	78),
-('New York, NY', 			2020,	96),
-('Death Valley, CA', 		2021,	128),
-('International Falls, MN', 2021,	77),
-('New York, NY', 			2021,	98);
+-- REINSERT THE DATA INTO THE HIGH_TEMPERATURE TABLE
+INSERT INTO HIGH_TEMPERATURE (CITY, YEAR, HIGH_TEMPERATURE)
+VALUES
+('DEATH VALLEY, CA', 		2020,	130),
+('INTERNATIONAL FALLS, MN', 2020,	78),
+('NEW YORK, NY', 			2020,	96),
+('DEATH VALLEY, CA', 		2021,	128),
+('INTERNATIONAL FALLS, MN', 2021,	77),
+('NEW YORK, NY', 			2021,	98);
 
 
-create database feedback;
-use feedback;
+CREATE DATABASE FEEDBACK;
+USE FEEDBACK;
 
-create table customer
+CREATE TABLE CUSTOMER
 (
-    customer_id     int,
-    first_name	    varchar(50),
-    last_name       varchar(50),
-    address         varchar(100),
-    primary key (customer_id)
+    CUSTOMER_ID     INT,
+    FIRST_NAME	    VARCHAR(50),
+    LAST_NAME       VARCHAR(50),
+    ADDRESS         VARCHAR(100),
+    PRIMARY KEY (CUSTOMER_ID)
 ); 
 
--- If you want to load the customer table with data, run these commands:
-insert into customer (customer_id, first_name, last_name, address)
-values
-(1, 'Bob', 'Smith', '12 Dreary Lane'),
-(2, 'Sally', 'Jones', '76 Boulevard Meugler'),
-(3, 'Karen', 'Bellyacher', '354 Main Street');
+-- IF YOU WANT TO LOAD THE CUSTOMER TABLE WITH DATA, RUN THESE COMMANDS:
+INSERT INTO CUSTOMER (CUSTOMER_ID, FIRST_NAME, LAST_NAME, ADDRESS)
+VALUES
+(1, 'BOB', 'SMITH', '12 DREARY LANE'),
+(2, 'SALLY', 'JONES', '76 BOULEVARD MEUGLER'),
+(3, 'KAREN', 'BELLYACHER', '354 MAIN STREET');
 
-create table complaint
+CREATE TABLE COMPLAINT
     (
-    complaint_id  int,
-    customer_id   int,
-    complaint     varchar(200),
-    primary key (complaint_id),
-    foreign key (customer_id) references customer(customer_id)
+    COMPLAINT_ID  INT,
+    CUSTOMER_ID   INT,
+    COMPLAINT     VARCHAR(200),
+    PRIMARY KEY (COMPLAINT_ID),
+    FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMER(CUSTOMER_ID)
     );
 	
--- Insert one row of data into the complaint table
-insert into complaint (complaint_id, customer_id, complaint)
-values (1, 3, 'I want to speak to your manager');
+-- INSERT ONE ROW OF DATA INTO THE COMPLAINT TABLE
+INSERT INTO COMPLAINT (COMPLAINT_ID, CUSTOMER_ID, COMPLAINT)
+VALUES (1, 3, 'I WANT TO SPEAK TO YOUR MANAGER');
 
--- Trying to insert this row into the complaint table will fail
--- because there is no customer 4 in the customer table.
-insert into complaint (complaint_id, customer_id, complaint)
-values (2, 4, 'My food was cold');
+-- TRYING TO INSERT THIS ROW INTO THE COMPLAINT TABLE WILL FAIL
+-- BECAUSE THERE IS NO CUSTOMER 4 IN THE CUSTOMER TABLE.
+INSERT INTO COMPLAINT (COMPLAINT_ID, CUSTOMER_ID, COMPLAINT)
+VALUES (2, 4, 'MY FOOD WAS COLD');
 
-alter table customer add column zip varchar(50);
-alter table customer drop column address;
-alter table customer rename column zip to zip_code;
-alter table customer rename to valued_customer;
+ALTER TABLE CUSTOMER ADD COLUMN ZIP VARCHAR(50);
+ALTER TABLE CUSTOMER DROP COLUMN ADDRESS;
+ALTER TABLE CUSTOMER RENAME COLUMN ZIP TO ZIP_CODE;
+ALTER TABLE CUSTOMER RENAME TO VALUED_CUSTOMER;
 
-create table contact
+CREATE TABLE CONTACT
 (
-    contact_id     int,
-    name           varchar(50)  not null,
-    city           varchar(50),
-    phone          varchar(20),
-    email_address  varchar(50)  unique,
-    primary key(contact_id)
+    CONTACT_ID     INT,
+    NAME           VARCHAR(50)  NOT NULL,
+    CITY           VARCHAR(50),
+    PHONE          VARCHAR(20),
+    EMAIL_ADDRESS  VARCHAR(50)  UNIQUE,
+    PRIMARY KEY(CONTACT_ID)
 );
 
--- Note that for contact 3, null does not have quotes around it:
-insert into contact values
-(1, 'Steve Chen',	'Beijing',	'123-3123',	'steve@schen21.org'),
-(2, 'Joan Field',	'New York',	'321-4321',	'jfield@jfny99.com'),
-(3, 'Bill Bashful',	'Lincoln',	null,		'bb@shyguy77.edu');
+-- NOTE THAT FOR CONTACT 3, NULL DOES NOT HAVE QUOTES AROUND IT:
+INSERT INTO CONTACT VALUES
+(1, 'STEVE CHEN',	'BEIJING',	'123-3123',	'STEVE@SCHEN21.ORG'),
+(2, 'JOAN FIELD',	'NEW YORK',	'321-4321',	'JFIELD@JFNY99.COM'),
+(3, 'BILL BASHFUL',	'LINCOLN',	NULL,		'BB@SHYGUY77.EDU');
 
-create table job
+CREATE TABLE JOB
 (
-    job_id     int,
-    job_desc   varchar(100),
-    shift      varchar(50) default '9-5',
-    primary key (job_id)
+    JOB_ID     INT,
+    JOB_DESC   VARCHAR(100),
+    SHIFT      VARCHAR(50) DEFAULT '9-5',
+    PRIMARY KEY (JOB_ID)
 );
 
 
-create table product
+CREATE TABLE PRODUCT
 	(
-	product_id		int,
-	product_name	varchar(100),
-	supplier_id		int
+	PRODUCT_ID		INT,
+	PRODUCT_NAME	VARCHAR(100),
+	SUPPLIER_ID		INT
 	);
 	
--- Create an index on the supplier_id column to speed up retrieval
-create index product_supplier_index on product(supplier_id);
+-- CREATE AN INDEX ON THE SUPPLIER_ID COLUMN TO SPEED UP RETRIEVAL
+CREATE INDEX PRODUCT_SUPPLIER_INDEX ON PRODUCT(SUPPLIER_ID);
 
-drop table product;
+DROP TABLE PRODUCT;
 
-create database pet;
+CREATE DATABASE PET;
 
--- Don't forget to run the USE command so that the tables below will be 
--- created in the "pet" database
-use pet;
+-- DON'T FORGET TO RUN THE USE COMMAND SO THAT THE TABLES BELOW WILL BE 
+-- CREATED IN THE "PET" DATABASE
+USE PET;
 
--- Drop any old versions of this table before recreating it.
-drop table if exists owner;
-create table owner
+-- DROP ANY OLD VERSIONS OF THIS TABLE BEFORE RECREATING IT.
+DROP TABLE IF EXISTS OWNER;
+CREATE TABLE OWNER
 (
-	owner_id		int,
-	owner_name		varchar(100),
-	owner_address	varchar(100),
-	primary key (owner_id)
+	OWNER_ID		INT,
+	OWNER_NAME		VARCHAR(100),
+	OWNER_ADDRESS	VARCHAR(100),
+	PRIMARY KEY (OWNER_ID)
 );
 
-drop table if exists breed;
+DROP TABLE IF EXISTS BREED;
 
-create table breed
+CREATE TABLE BREED
 (
-	breed_id	int,
-	breed_name	varchar(50),
-	temperament	varchar(100),
-	primary key (breed_id)
+	BREED_ID	INT,
+	BREED_NAME	VARCHAR(50),
+	TEMPERAMENT	VARCHAR(100),
+	PRIMARY KEY (BREED_ID)
 );
 	
-drop table if exists veterinarian;
-create table veterinarian
+DROP TABLE IF EXISTS VETERINARIAN;
+CREATE TABLE VETERINARIAN
 (
-	veterinarian_id			int,
-	veterinarian_name		varchar(100),
-	veterinarian_address	varchar(100),
-	veterinarian_phone		varchar(100),
-	primary key (veterinarian_id)
+	VETERINARIAN_ID			INT,
+	VETERINARIAN_NAME		VARCHAR(100),
+	VETERINARIAN_ADDRESS	VARCHAR(100),
+	VETERINARIAN_PHONE		VARCHAR(100),
+	PRIMARY KEY (VETERINARIAN_ID)
 );
 
-drop table if exists dog;
+DROP TABLE IF EXISTS DOG;
 
-create table dog
+CREATE TABLE DOG
 (
-    dog_id            int,
-    dog_name          varchar(50) unique,
-    owner_id          int,
-    breed_id          int,
-    veterinarian_id   int,
-    primary key (dog_id),
-    foreign key (owner_id) references owner(owner_id),
-    foreign key (breed_id) references breed(breed_id),
-    foreign key (veterinarian_id) references veterinarian(veterinarian_id)
+    DOG_ID            INT,
+    DOG_NAME          VARCHAR(50) UNIQUE,
+    OWNER_ID          INT,
+    BREED_ID          INT,
+    VETERINARIAN_ID   INT,
+    PRIMARY KEY (DOG_ID),
+    FOREIGN KEY (OWNER_ID) REFERENCES OWNER(OWNER_ID),
+    FOREIGN KEY (BREED_ID) REFERENCES BREED(BREED_ID),
+    FOREIGN KEY (VETERINARIAN_ID) REFERENCES VETERINARIAN(VETERINARIAN_ID)
 );
 
-show indexes from dog;
+SHOW INDEXES FROM DOG;
 
 
 
-####Chapter 3 practice####
+####CHAPTER 3 PRACTICE####
 #SELECT COMMAND PRACTICE###
 USE LAND;
 SELECT CONTINENT_ID,
