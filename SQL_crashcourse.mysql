@@ -226,6 +226,32 @@ WHERE FIRST_NAME='KAREN';
 
 
 USE LAND;
-SELECT * FROM CONTINENT;
+SELECT * FROM CONTINENT; 
+
+###02/22/2024
+#you muyst include space after -- to conside it a comment
+
+/* is used to multiline comments. you must start and end comments with the symbol */
+ 
+ SELECT 3.14 /* the vaue of pi*/ *81; -- This symbol, */ ,allows you to do in line comments.
+
+
+
+
+
+ #chapter 4: Data Types###
+
+ CREATE DATABASE MYSQLDATATYPES;
+ USE MYSQLDATATYPES;
+ CREATE TABLE solar_eclipse
+ (
+    eclipse_date    date,
+    time_of_greatest_eclipse    time,
+    eclipse_type    varchar(10),
+    magnitude   decimal(4,3)
+ );
+ #ok
+
+
 
 
